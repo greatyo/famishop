@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_11_065702) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_11_120218) do
   create_table "categories", charset: "utf8", force: :cascade do |t|
     t.string "category_name", null: false
     t.datetime "created_at", null: false
@@ -39,13 +39,41 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_11_065702) do
     t.index ["shop_id"], name: "index_items_on_shop_id"
   end
 
+  create_table "shoppings", charset: "utf8", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_shoppings_on_item_id"
+    t.index ["user_id"], name: "index_shoppings_on_user_id"
+  end
+
   create_table "shops", charset: "utf8", force: :cascade do |t|
     t.string "shop_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", charset: "utf8", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.bigint "family_id", null: false
+    t.string "nickname", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["family_id"], name: "index_users_on_family_id"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
   add_foreign_key "items", "categories"
   add_foreign_key "items", "families"
   add_foreign_key "items", "shops"
+  add_foreign_key "shoppings", "items"
+  add_foreign_key "shoppings", "users"
+  add_foreign_key "users", "families"
 end
