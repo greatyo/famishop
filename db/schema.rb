@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_11_065702) do
     t.integer "price", null: false
     t.bigint "shop_id", null: false
     t.bigint "category_id", null: false
-    t.text "remarks", null: false
+    t.text "remarks"
     t.bigint "family_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
