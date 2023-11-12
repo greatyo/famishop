@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-  has_meny :items
+  has_many :items
 end

@@ -1,6 +1,6 @@
 class Family < ApplicationRecord
-  has_meny :items
-  #has_meny :users
+  has_many :items
+  has_many :users
 
   validates :name, presence: true
   validates :user_count, presence: true
