@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
-  #has_meny :shoppings
+  belongs_to :user
   belongs_to :shop
   belongs_to :category
   belongs_to :family
+  #belongs_to :scomplete
 end

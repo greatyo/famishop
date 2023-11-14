@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_11_120218) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_14_204511) do
   create_table "categories", charset: "utf8", force: :cascade do |t|
     t.string "category_name", null: false
     t.datetime "created_at", null: false
@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_11_120218) do
   create_table "items", charset: "utf8", force: :cascade do |t|
     t.string "item_name", null: false
     t.integer "unit_quantity", null: false
+    t.integer "quantity"
     t.integer "price", null: false
     t.bigint "shop_id", null: false
     t.bigint "category_id", null: false
@@ -34,19 +35,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_11_120218) do
     t.bigint "family_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "request_user_id"
+    t.bigint "user_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["family_id"], name: "index_items_on_family_id"
+    t.index ["request_user_id"], name: "index_items_on_request_user_id"
     t.index ["shop_id"], name: "index_items_on_shop_id"
-  end
-
-  create_table "shoppings", charset: "utf8", force: :cascade do |t|
-    t.bigint "item_id", null: false
-    t.bigint "user_id", null: false
-    t.integer "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_shoppings_on_item_id"
-    t.index ["user_id"], name: "index_shoppings_on_user_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "shops", charset: "utf8", force: :cascade do |t|
@@ -73,7 +68,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_11_120218) do
   add_foreign_key "items", "categories"
   add_foreign_key "items", "families"
   add_foreign_key "items", "shops"
-  add_foreign_key "shoppings", "items"
-  add_foreign_key "shoppings", "users"
+  add_foreign_key "items", "users"
   add_foreign_key "users", "families"
 end

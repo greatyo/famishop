@@ -1,5 +1,7 @@
 <%= render "shared/header" %>
 index
+<%= link_to '新規登録', new_user_registration_path, class: "sign-up" %>
+<%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "logout" %>
   <div class='item-contents'>
     <h2 class='title'>アイテム一覧</h2>
 
@@ -7,7 +9,7 @@ index
       <% @items.each do |item| %>
         <li class='list'>
           <div class=item-category>
-            <%= item.category_id.category_name %>
+            <%= item.category.category_name %>
           </div>
           <div class=item-name>
             <%= item.item_name %>
@@ -19,12 +21,15 @@ index
             <%= item.unit_quantity %>
           </div>
           <div class=item-shop>
-            <%= item.shop_id.shop_name %>
+            <%= item.shop_id %>
           </div>
           <div class=item-remarks>
             <%= item.remarks %>
           </div>
-
+          <div class=item-remarks>
+            <%= item.request_user_id %>
+          </div>
+          <input type="checkbox" name="done" value="done">買った！
         </li>
       <% end %>
     </ul>
