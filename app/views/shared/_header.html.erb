@@ -6,7 +6,7 @@
   <div class='links'>
     <ul class='link-list'>
       <li><%= link_to '新規アイテム登録', new_family_item_path(family_id: current_user.family_id), class: "link-botn" %></li>
-      <li><%= link_to '買い物リスト登録', "#", class: "link-botn" %></li>
+      <li><%= link_to '買い物リスト登録', index_request_family_items_path(family_id: current_user.family_id), class: "link-botn" %></li>
       <li><%= link_to '買い物履歴', "#", class: "link-botn" %></li>
       <li><%= link_to '家族解除', "#", class: "link-botn" %></li>
     </ul>

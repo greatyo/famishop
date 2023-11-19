@@ -28,16 +28,34 @@ class ItemsController < ApplicationController
     # チェックされたアイテムがあればそれぞれのレコードを更新
     if checked_item_ids.present?
       checked_item_ids.each do |item_id|
-        item = Item.find_by(id: item_id, user_id: current_user.id)
+        item = Item.find_by(id: item_id)
         # 特定のカラムを更新する例（user_idをnilに設定する）
         item.update(user_id: nil) if item.present?
       end
-    end
-
     # リダイレクト先やフラッシュメッセージの設定など、適切な処理を行う
-
     # 例えば、更新後にアイテム一覧ページにリダイレクトする場合
-    redirect_to index, notice: "選択されたアイテムが更新されました。"
+      redirect_to root_path
+    end
+  end
+
+  def index_request
+    @items = Item.where(family_id: current_user.family_id)
+    @categories = Category.all
+  end
+
+  def update_request
+    # チェックボックスから送信されたアイテムのIDを取得
+    checked_item_ids = params[:item_ids]
+
+    # チェックされたアイテムがあればそれぞれのレコードを更新
+    if checked_item_ids.present?
+      checked_item_ids.each do |item_id|
+        item = Item.find_by(id: item_id)
+        # 特定のカラムを更新する例（user_idをnilに設定する）
+          item.update(user_id: current_user.id) if item.present?
+        end
+      end
+      redirect_to root_path
   end
 
   private

@@ -1,0 +1,42 @@
+<%= render "shared/header" %>
+index_request
+<%= link_to '新規登録', new_user_registration_path, class: "sign-up" %>
+<%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "logout" %>
+  <div class='item-contents'>
+    <h2 class='title'>アイテム一覧</h2>
+
+    <%= form_with model: @items, url: update_request_family_items_path(family_id: current_user.family_id, id: @items), method: :put, local: true do |f| %>
+      <ul class='item-lists'>
+        <% @items.each do |item| %>
+          <li class='list'>
+            <div class=item-category>
+              <%= item.category.category_name %>
+            </div>
+            <div class=item-name>
+              <%= item.item_name %>
+            </div>
+            <div class=item-price>
+              <%= item.price %>
+            </div>
+            <div class=item-quantity>
+              <%= item.unit_quantity %>
+            </div>
+            <div class=item-shop>
+              <%= item.shop_id %>
+            </div>
+            <div class=item-remarks>
+              <%= item.remarks %>
+            </div>
+            <div class=item-user>
+              <%= item.user_id %>
+            </div>
+            <div class="item-done-checkbox">
+              <%= check_box_tag "item_ids[]", item.id %>
+              <%= label_tag "item_ids_#{item.id}", "登録する" %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+      <%= f.submit "更新する" ,class:"sell-btn" %>
+    <% end %>
+  </div>
