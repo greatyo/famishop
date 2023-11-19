@@ -5,32 +5,40 @@ index
   <div class='item-contents'>
     <h2 class='title'>アイテム一覧</h2>
 
-    <ul class='item-lists'>
-      <% @items.each do |item| %>
-        <li class='list'>
-          <div class=item-category>
-            <%= item.category.category_name %>
-          </div>
-          <div class=item-name>
-            <%= item.item_name %>
-          </div>
-          <div class=item-price>
-            <%= item.price %>
-          </div>
-          <div class=item-quantity>
-            <%= item.unit_quantity %>
-          </div>
-          <div class=item-shop>
-            <%= item.shop_id %>
-          </div>
-          <div class=item-remarks>
-            <%= item.remarks %>
-          </div>
-          <div class=item-remarks>
-            <%= item.request_user_id %>
-          </div>
-          <input type="checkbox" name="done" value="done">買った！
-        </li>
-      <% end %>
-    </ul>
+    <%= form_with model: @items, url: family_item_path(family_id: current_user.family_id, id: @items), method: :put, local: true do |f| %>
+    <%#<%= form_tag(family_item_path, method: :put) do %>
+      <ul class='item-lists'>
+        <% @items.each do |item| %>
+          <li class='list'>
+            <div class=item-category>
+              <%= item.category.category_name %>
+            </div>
+            <div class=item-name>
+              <%= item.item_name %>
+            </div>
+            <div class=item-price>
+              <%= item.price %>
+            </div>
+            <div class=item-quantity>
+              <%= item.unit_quantity %>
+            </div>
+            <div class=item-shop>
+              <%= item.shop_id %>
+            </div>
+            <div class=item-remarks>
+              <%= item.remarks %>
+            </div>
+            <div class=item-user>
+              <%= item.user_id %>
+            </div>
+            <div class="item-done-checkbox">
+              <%= check_box_tag "item_ids[]", item.id %>
+              <%= label_tag "item_ids_#{item.id}", "買った！" %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+      <%= f.submit "変更する" ,class:"sell-btn" %>
+      <%#<%= submit_tag "選択したアイテムを更新", class: 'update-items-button' %>
+    <% end %>
   </div>

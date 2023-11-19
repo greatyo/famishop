@@ -1,5 +1,5 @@
 <header class='header'>
-  <ファミショップ>
+  <%= link_to "ファミショップ", new_user_session_path ,class:"second-logo" %>
 
 
 
@@ -11,4 +11,6 @@
       <li><%= link_to '家族解除', "#", class: "link-botn" %></li>
     </ul>
   </div>
+  ニックネーム：<%= current_user.nickname %>
+  家族id：<%= current_user.family.id %>
 </header>
