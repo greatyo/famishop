@@ -1,0 +1,62 @@
+<%= render "shared/header" %>
+
+
+  <div class="items-sell-main">
+    <h2 class="items-sell-title">商品の情報を入力</h2>
+    <%= form_with model: @item_shop_category, url:family_items_path , local: true do |f| %>
+
+
+
+    <div class="new-items">
+      <div class="weight-bold-text">
+        商品名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :item_name, class:"items-text", id:"item-name", maxlength:"40" %>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          単位数量
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :unit_quantity, class:"items-text", id:"item-info" %>
+      </div>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          単価
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :price, class:"items-text", id:"item-info" %>
+      </div>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          店
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :shop_name, class:"items-text", id:"item-info" %>
+      </div>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          カテゴリー
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :category_name, class:"items-text", id:"item-info" %>
+      </div>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          備考
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :remarks, class:"items-text", id:"item-info" %>
+      </div>
+    </div>
+
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= f.submit "出品する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+  </div>
+  <% end %>
+
+</div>
