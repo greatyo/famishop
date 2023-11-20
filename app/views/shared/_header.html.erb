@@ -1,16 +1,19 @@
 <header class='header'>
-  <%= link_to "ファミショップ", new_user_session_path ,class:"second-logo" %>
-
-
+  <%= link_to "ファミショップ", new_user_session_path ,class:"title-logo" %>
+    <div class="family-user">
+    <div class="family-id">ファミリーid：<%= current_user.family.id %></div>
+    <div class="nickname">ユーザー：<%= current_user.nickname %></div>
+  </div>
+  <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "logout-button" %>
 
   <div class='links'>
     <ul class='link-list'>
-      <li><%= link_to '新規アイテム登録', new_family_item_path(family_id: current_user.family_id), class: "link-botn" %></li>
-      <li><%= link_to '買い物リスト登録', index_request_family_items_path(family_id: current_user.family_id), class: "link-botn" %></li>
-      <li><%= link_to '買い物履歴', "#", class: "link-botn" %></li>
-      <li><%= link_to '家族解除', "#", class: "link-botn" %></li>
+      <div class=link-box><li><%= link_to '買い物リスト', new_user_session_path, class: "link-button" %></li></div>
+      <div class=link-box><li><%= link_to '新規商品登録', new_family_item_path(family_id: current_user.family_id), class: "link-button" %></li></div>
+      <div class=link-box><li><%= link_to '買い物リスト登録', index_request_family_items_path(family_id: current_user.family_id), class: "link-button" %></li></div>
+      <div class=link-box><li><%= link_to '買い物履歴', "#", class: "link-button" %></li></div>
+      <div class=link-box><li><%= link_to '商品削除', "#", class: "link-button" %></li></div>
+      <div class=link-box><li><%= link_to '家族解除', "#", class: "link-button" %></li></div>
     </ul>
   </div>
-  ニックネーム：<%= current_user.nickname %>
-  家族id：<%= current_user.family.id %>
 </header>

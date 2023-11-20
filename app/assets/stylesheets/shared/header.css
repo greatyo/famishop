@@ -1,0 +1,59 @@
+.header {
+  background-color: #fce4ec;
+  height: 200px;
+  width: 100vw;
+  padding: 20px 0 0 0;
+  color: lightslategrey;
+}
+
+.title-logo {
+  padding: 50px;
+  font-size: 30px;
+  font-weight: bold;
+  color: lightskyblue;
+}
+
+.family-user {
+  display: flex;
+  justify-content: right;
+  font-size: 20px;
+  color: lightslategrey;
+}
+
+.family-id {
+  width: 300px
+}
+
+.nickname {
+  width: 300px;
+}
+
+.logout-button {
+  display: flex;
+  justify-content: right;
+  color: lightslategrey;
+}
+
+.link-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.link-box {
+  height: 50px;
+  width: 600px;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link-button {
+  font-size: 20px;
+  color: lightslategrey;
+}
+
+a {
+  text-decoration: none;
+}
