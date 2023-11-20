@@ -47,6 +47,21 @@ class ItemsController < ApplicationController
       redirect_to root_path
   end
 
+  def index_destroy
+    @items = Item.where(family_id: current_user.family_id)
+  end
+
+  def destroy
+    checked_item_ids = params[:item_ids]
+    if checked_item_ids.present?
+      checked_item_ids.each do |item_id|
+        item = Item.find_by(id: item_id)
+          item.destroy if item.present?
+        end
+      end
+      redirect_to root_path
+  end
+
   private
 
   def item_shop_category_params

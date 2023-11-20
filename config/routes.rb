@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       collection do
         get 'index_request'
         put 'update_request'
+        get 'index_destroy'
       end
     end
   end

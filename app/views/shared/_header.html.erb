@@ -12,7 +12,7 @@
       <div class=link-box><li><%= link_to '新規商品登録', new_family_item_path(family_id: current_user.family_id), class: "link-button" %></li></div>
       <div class=link-box><li><%= link_to '買い物リスト登録', index_request_family_items_path(family_id: current_user.family_id), class: "link-button" %></li></div>
       <div class=link-box><li><%= link_to '買い物履歴', "#", class: "link-button" %></li></div>
-      <div class=link-box><li><%= link_to '商品削除', "#", class: "link-button" %></li></div>
+      <div class=link-box><li><%= link_to '商品削除', index_destroy_family_items_path(family_id: current_user.family_id), class: "link-button" %></li></div>
       <div class=link-box><li><%= link_to '家族解除', "#", class: "link-button" %></li></div>
     </ul>
   </div>

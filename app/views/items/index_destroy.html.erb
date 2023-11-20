@@ -1,0 +1,63 @@
+<%= render "shared/header" %>
+  <div class='item-contents'>
+    <div class="title-block">
+      <div class='title'>商品削除</div>
+    </div>
+
+    <div class='item-card'>
+      <div class=item-category>
+        カテゴリー
+      </div>
+      <div class=item-name>
+        商品名
+      </div>
+      <div class=item-price>
+        単価
+      </div>
+      <div class=item-quantity>
+        購入数
+      </div>
+      <div class=item-shop>
+        店舗
+      </div>
+      <div class=item-remarks>
+        備考
+      </div>
+      <div class="item-done-checkbox">
+      </div>
+    </div>
+
+    <%= form_with model: @items, url: family_item_path(family_id: current_user.family_id, id: @items), method: :delete, local: true do |f| %>
+      <ul class='item-lists'>
+        <% @items.each do |item| %>
+          <li class='list'>
+            <div class='item-card'>
+              <div class=item-category>
+                <%= item.category.category_name %>
+              </div>
+              <div class=item-name>
+                <%= item.item_name %>
+              </div>
+              <div class=item-price>
+                <%= item.price %>
+              </div>
+              <div class=item-quantity>
+                <%= item.unit_quantity %>
+              </div>
+              <div class=item-shop>
+                <%= item.shop.shop_name %>
+              </div>
+              <div class=item-remarks>
+                <%= item.remarks %>
+              </div>
+              <div class="item-done-checkbox">
+                <%= check_box_tag "item_ids[]", item.id %>
+                <%= label_tag "item_ids_#{item.id}", "削除選択" %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+      <div class="sell-btn-block"><%= f.submit "削除する" ,class:"sell-btn" %></div>
+    <% end %>
+  </div>
