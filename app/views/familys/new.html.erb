@@ -1,0 +1,4 @@
+<%= form_with model: @family, url: familys_path, class: 'registration-main', local: true do |f| %>
+<%= f.text_area :name, class:"input-default", id:"name", placeholder:"ファミリー名", maxlength:"40" %>
+<%= f.submit "ファミリー登録" ,class:"register-red-btn" %>
+<% end %>
