@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -10,11 +11,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    super do |user|
-      family = Family.find_by(id: params[:user][:family_id], name: params[:user][:family_name])
-      user.family_id = family.id if family.present?
-      user.save
+    family = Family.find_by(id: params[:family_id], name: params[:name])
+    if family.present?
+
+      build_resource(email: params[:email], family_id: params[:family_id], nickname: params[:nickname] ,password: params[:password]) # 新しいユーザーを作成
+      resource.family_id = family.id # ファミリーを関連付ける
+      resource.save # ユーザーを保存
+
+      redirect_to root_path
+    else
+      render 'devise/registrations/new'
     end
+    #super do |user|
+      #family = Family.find_by(id: params[:family_id], name: params[:name])
+      #user.family_id = family.id if family.present?
+      #user.save
+    #end
   end
 
   # GET /resource/sign_up
@@ -52,6 +64,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # protected
+
+  protected
+
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :email, :password, :password_confirmation, :family_id])
+  end
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

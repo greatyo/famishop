@@ -38,6 +38,20 @@
 
   <%= link_to 'ファミリーidが無い方はこちら',  new_family_path, class: "link-button" %>
   <div class='form-group'>
+
+  <% if params[:family_id].present? %>
+    <div class='form-text-wrap'>
+      <label class="form-text">家族id</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.number_field :family_id, value: params[:family_id], readonly: true, class:"input-default" %>
+    <div class='form-text-wrap'>
+      <label class="form-text">家族名</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_area :name, value: params[:name], readonly: true, class:"input-default" %>
+
+  <% else %>
     <div class='form-text-wrap'>
       <label class="form-text">家族id</label>
       <span class="indispensable">必須</span>
@@ -48,11 +62,9 @@
       <span class="indispensable">必須</span>
     </div>
     <%= f.text_area :name, class:"input-default", placeholder:"家族名" %>
+  <% end %>
 
   </div>
-  <%= params[:family_id] %>
-  <%= params[:name] %>
-
 
   <div class='register-btn'>
     <%= f.submit "ユーザー登録" ,class:"register-red-btn" %>
