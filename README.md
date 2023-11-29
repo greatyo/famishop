@@ -1,24 +1,64 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アプリメーション名
+ファミショップ
 
-Things you may want to cover:
+# アプリケーション概要
+少ない操作で買い物リストを作成し、家族で共有するアプリ
 
-* Ruby version
+# URL
+https://famishop.onrender.com
+# テスト用アカウント
+ニックネーム:山田太郎  
+メールアドレス:tarou@yamada  
+パスワード:yamada36  
 
-* System dependencies
+ニックネーム:山田花子  
+メールアドレス:hanako@yamada  
+パスワード:yamada36  
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 利用方法
+## 新規商品登録
+良く買い物する商品をあらかじめ登録します。  
+1.ヘッダーにある「新規商品登録」ボタンをクリックします。  
+2.新規商品登録する商品の内容を入力します(カテゴリー、商品名、単価、購入数、店舗、備考)  
+3.1～2を繰り返し、買い物する商品を登録します。  
+[![Image from Gyazo](https://i.gyazo.com/2c6cdb76b186e6ab5a9f3b204a57d720.gif)](https://gyazo.com/2c6cdb76b186e6ab5a9f3b204a57d720)
+## 買い物リスト登録
+登録した商品から買い物リストにする商品を選びます。  
+1.「買い物リスト登録」ボタンをクリックします。  
+2.新規商品登録で登録した商品がリストアップされます。  
+3.買い物リスト登録する商品の右にある「登録する」チェックボックスをクリックし、選択します。  
+4.「更新する」ボタンをクリックします。  
+5.買い物リストページ(トップページ)に遷移し、選択した商品が買い物リスト登録されています。  
+[![Image from Gyazo](https://i.gyazo.com/33cdf0756eeb1711b92eddfd4c2ce1da.gif)](https://gyazo.com/33cdf0756eeb1711b92eddfd4c2ce1da)
+## 買い物完了
+買い物を完了した場合に買い物リストから商品を削除します。  
+1.「買い物リスト」ボタンをクリックします。  
+2.買い物リスト登録した商品がリストアップされます。  
+3.買い物が完了し、買い物リストから削除する商品の右にある「購入済み」チェックボックスをクリックし、選択します。  
+4.「購入済み確定」ボタンをクリックします。  
+5.選択した商品が買い物リストから削除されています。  
+[![Image from Gyazo](https://i.gyazo.com/7096b2114ad6d42df12f0cdc38133524.gif)](https://gyazo.com/7096b2114ad6d42df12f0cdc38133524)
+# アプリケーションを作成した背景
+家庭で使用する消耗品が無くなってしまう(使いたいときに無い)ことが多くあり、課題を感じていました。  
+家庭を持つ方は同じような悩みを抱えていると思い、アプリで解決できないかと思いました。  
+買い物メモすること自体に負担を感じてしまうことと、まとめ買いする際に忘れることが原因と捉えました。  
+楽な操作で買い物メモを作成することができる買い物メモアプリがあれば、解決に近づくと考えました。  
+また、家族でアプリを使用し、買い物リストを共有することで、家族が気付いた消耗品不足をもれなくに買い物メモできると思いました。  
+# 洗い出した要件
+要件定義シートURL
+https://docs.google.com/spreadsheets/d/1mY_e79T6dvl2hs9eaKgfXtKydOPnBc9ytfDxRNbZkAg/edit#gid=982722306
+# 実装予定の機能
+要件定義シート参照
+# データベース設計
+[![Image from Gyazo](https://i.gyazo.com/1b3f48689b5c8004357bf4c51037c9be.png)](https://gyazo.com/1b3f48689b5c8004357bf4c51037c9be)
+# 画面遷移図
+[![Image from Gyazo](https://i.gyazo.com/ef0b87f2fd5c95e2dd8f8393cc7e05e7.png)](https://gyazo.com/ef0b87f2fd5c95e2dd8f8393cc7e05e7)
+# 開発環境
+ruby-version 3.2.0  
+Rails 7.0.8
+# 工夫したポイント
+可能な限り少ない操作で使用できるアプリにしました。  
+見た目はシンプルに必要最小限の表示項目にしました。  
+要件定義シートに記載したポイント機能などを追加し、他アプリとの差別化を図ります。
