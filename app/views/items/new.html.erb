@@ -28,7 +28,8 @@
 
     <%= form_with model: @item_shop_category, url:family_items_path , local: true do |f| %>
     <div class="item-card">
-      <%= f.text_area :category_name, class:"item-category", id:"item-info" %>
+      <%#= f.text_area :category_name, class:"item-category", id:"item-info" %>
+      <%= f.collection_select :category_id, Category.all, :id, :category_name  %>
       <%= f.text_area :item_name, class:"item-name", id:"item-name", maxlength:"40" %>
       <%= f.text_area :price, class:"item-price", id:"item-info" %>
       <%= f.text_area :unit_quantity, class:"item-quantity", id:"item-info" %>
